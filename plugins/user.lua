@@ -49,6 +49,10 @@ return {
       require("cinnamon").setup()
     end,
   },
+  { 
+    'luckasRanarison/tree-sitter-hypr',
+    ft = "conf"
+  },
   -- {
   --   "zbirenbaum/copilot.lua",
   --   cmd = "Copilot",

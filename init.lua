@@ -1,4 +1,25 @@
 return {
+  -- Configure Tree 
+  plugins = {
+    init = {
+      ["nvim/treesitter/nvim-treesitter"] = {
+        config = function()
+          require "configs.treesitter"
+          -- Custom config below:
+          local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+          parser_config.hypr = {
+            install_info = {
+              url = "https://github.com/luckasRanarison/tree-sitter-hypr",
+              files = { "src/parser.c" },
+              branch = "master",
+            },
+            filetype = "hypr",
+          }
+          -- Custom config end
+      end,
+      },
+    },
+  },
   -- Configure AstroNvim updates
   updater = {
     remote = "origin", -- remote to use
@@ -18,7 +39,7 @@ return {
   },
 
   -- Set colorscheme to use
-  colorscheme = "astrodark",
+  colorscheme = "everforest",
 
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
