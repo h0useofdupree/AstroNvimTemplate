@@ -2,22 +2,6 @@ return {
   -- Configure Tree 
   plugins = {
     init = {
-      ["nvim/treesitter/nvim-treesitter"] = {
-        config = function()
-          require "configs.treesitter"
-          -- Custom config below:
-          local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-          parser_config.hypr = {
-            install_info = {
-              url = "https://github.com/luckasRanarison/tree-sitter-hypr",
-              files = { "src/parser.c" },
-              branch = "master",
-            },
-            filetype = "hypr",
-          }
-          -- Custom config end
-      end,
-      },
       -- ["karb94/neoscroll"] = {
       --   config = function()
       --     require configs.neoscroll
@@ -88,6 +72,11 @@ return {
     servers = {
       -- "pyright"
     },
+    settings = {
+      ltex = {
+        language = "de-DE"
+      },
+    },
   },
 
   -- Configure require("lazy").setup() options
@@ -117,5 +106,11 @@ return {
     --     ["~/%.config/foo/.*"] = "fooscript",
     --   },
     -- }
+    vim.api.nvim_create_autocmd("LspAttach", {
+      callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        client.server_capabilities.semanticTokensProvider = nil
+      end,
+    })
   end,
 }

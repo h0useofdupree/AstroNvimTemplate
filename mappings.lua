@@ -20,6 +20,14 @@ return {
     ["<leader>b"] = { name = "Buffers" },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+
+    -- ["<F5>"] = { 
+    --   'n', 'v', 'i',
+    --   function()
+    --     require("knap").process_once() end,
+    --   desc = "Process and Refresh once",
+    -- },
+
   },
   t = {
     -- setting a mapping to false will disable it
